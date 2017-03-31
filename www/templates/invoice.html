@@ -9,10 +9,10 @@
       <ion-toggle toggle-class="toggle-positive" id="fatura-toggle1">Pago</ion-toggle>
     </form>
 
-    <h3 id="fatura-heading1" style="color:#000000;">{{invoice.amount | currency}}</h3>
+    <h3 id="fatura-heading1" style="color:#000000;">Total: {{invoice.amount | currency}}</h3>
     <ion-list id="fatura-list2">
-      <ion-item ng-repeat="transaction in invoice.transactions | orderBy: '-created_at'" class="" id="transaction-list-item1">
-        {{transaction.description}} - {{transaction.amount | currency}}
+      <ion-item ng-repeat="transaction in invoice.transactions | orderBy: '-created_at'" id="transaction-list-item1">{{transaction.description}}
+         <span class="item-note">{{transaction.amount | currency}}</span>
       </ion-item>
     </ion-list>
 
@@ -20,7 +20,7 @@
     <ion-list id="fatura-list3">
       <ion-item ng-repeat="pay in invoice.payments | orderBy: '-create_at'" class="item-avatar" id="fatura-list-item13">
         <img src="img/boy.png">
-        <h2>{{pay.user.name}}</h2>
+        <h2>{{pay.user_id}}</h2>
         <p>{{pay.amount | currency}}</p>
       </ion-item>
     </ion-list>

@@ -1,7 +1,8 @@
 angular.module('app.controllers', [])
 
 .controller('invoiceCtrl', ['$scope', '$stateParams', 'InvoiceService', function ($scope, $stateParams, InvoiceService) {
-  InvoiceService.get().then(function(invoice) {
+  var familyId = $stateParams.familyId;
+  InvoiceService.get(familyId).then(function(invoice) {
       $scope.invoice = invoice;
   });
 }])

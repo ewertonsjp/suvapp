@@ -9,7 +9,7 @@ angular.module('app.routes', []).config(function($stateProvider, $urlRouterProvi
     })
 
     .state('invoice', {
-      url: '/invoice',
+      url: '/invoice/:familyId',
       templateUrl: 'templates/invoice.html',
       controller: 'invoiceCtrl'
     })
