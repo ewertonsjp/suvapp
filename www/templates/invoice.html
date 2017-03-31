@@ -1,4 +1,4 @@
-<ion-view title="{{invoice.compet}}" id="page2">
+<ion-view title="{{invoice.description}}" id="page2">
 
   <ion-nav-buttons side="right" class="has-header">
     <a href="/#/transaction/create" class="button button-icon icon ion-android-add-circle"></a>
@@ -9,7 +9,7 @@
       <ion-toggle toggle-class="toggle-positive" id="fatura-toggle1">Pago</ion-toggle>
     </form>
 
-    <h3 id="fatura-heading1" style="color:#000000;">{{invoice.valorTotal | currency}}</h3>
+    <h3 id="fatura-heading1" style="color:#000000;">{{invoice.amount | currency}}</h3>
     <ion-list id="fatura-list2">
       <ion-item ng-repeat="transaction in invoice.transactions | orderBy: '-created_at'" class="" id="transaction-list-item1">
         {{transaction.description}} - {{transaction.amount | currency}}

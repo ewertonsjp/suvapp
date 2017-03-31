@@ -3,8 +3,10 @@
   "app_id": "",
   "proxies": [
     {
-      "path": "/api_family",
-      "proxyUrl": "http://suvinando.app/family"
+      "path": "/api_family", "proxyUrl": "http://suvinando.app/family/listAsJson"
+    },
+    {
+      "path": "/api_invoice", "proxyUrl": "http://suvinando.app/invoice/listAsJson"
     }
   ]
 }

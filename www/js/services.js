@@ -6,14 +6,12 @@ angular.module('app.services', [])
 
 .service('FamilyService', ['$http', function($http) {
 
-  URL = "http://localhost:8100/#/api_family";
+  URL = "http://localhost:8100/api_family/";
 
   return {
       list: function() {
         return $http.get(URL).then(function(response) {
-          console.log(response.data);
-          families = response.data;
-          return families;
+          return response.data;
         }).catch(function(response){
           console.log("Fuck");
         });
@@ -41,4 +39,19 @@ angular.module('app.services', [])
       // }
   }
 
+}])
+
+.service('InvoiceService', ['$http', function($http) {
+
+  URL = "http://localhost:8100/api_invoice/";
+
+  return {
+      get: function() {
+        return $http.get(URL).then(function(response) {
+          return response.data;
+        }).catch(function(response){
+          console.log("ERROR");
+        });
+      }
+  }
 }]);
