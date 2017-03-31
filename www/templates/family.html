@@ -5,21 +5,11 @@
 
   <ion-content padding="true" class="has-header">
     <ion-list id="dashboard-list1">
-      <ion-item class="item-thumbnail-left" id="dashboard-list-item5">
-        <h2>Familia: APT-PLT</h2>
-        <p style="white-space:normal;">Apt dos mãos de Vaca de Paulistana</p>
-      </ion-item>
-      <ion-item class="item-thumbnail-left" id="dashboard-list-item6">
-        <h2>Familia: SPOTIFY</h2>
-        <p style="white-space:normal;">Apt dos mãos de Vaca de Paulistana</p>
-      </ion-item>
-      <ion-item class="item-thumbnail-left" id="dashboard-list-item7">
-        <h2>Familia: LANCHE-INFO</h2>
-        <p style="white-space:normal;">Apt dos mãos de Vaca de Paulistana</p>
-      </ion-item>
-      <ion-item class="item-thumbnail-left" id="dashboard-list-item8">
-        <h2>Familia: SKY</h2>
-        <p style="white-space:normal;">Apt dos mãos de Vaca de Paulistana</p>
+      <ion-item ng-repeat="family in families | orderBy: '-created_at'" class="item-thumbnail-left" id="family-list-item1">
+        <img src="img/family.ico">
+        <h2>{{family.name}}</h2>
+        <p style="white-space:normal;">{{family.description}}</p>
+        <a href="/#/invoice?family_id={{family.id}}">View</a>
       </ion-item>
     </ion-list>
   </ion-content>

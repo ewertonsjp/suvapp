@@ -1,4 +1,10 @@
 {
-  "name": "suvapp",
-  "app_id": ""
+  "name": "app",
+  "app_id": "",
+  "proxies": [
+    {
+      "path": "/api_family",
+      "proxyUrl": "http://suvinando.app/family"
+    }
+  ]
 }
