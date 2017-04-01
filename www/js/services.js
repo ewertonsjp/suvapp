@@ -6,30 +6,48 @@ angular.module('app.services', [])
 
 .service('FamilyService', ['$http', function($http) {
 
-  URL = "http://localhost:8100/api_family/";
-
   return {
       list: function() {
-        return $http.get(URL).then(function(response) {
+        return $http.get("http://localhost:8100/api_family/").then(function(response) {
           return response.data;
         }).catch(function(response){
-          console.log("Fuck");
+          
         });
-      },
+      }
   }
 
 }])
 
 .service('InvoiceService', ['$http', function($http) {
 
-  URL = "http://localhost:8100/api_invoice?familyId=";
-
   return {
       get: function(familyId) {
-        return $http.get(URL + familyId).then(function(response) {
+        return $http.get("http://localhost:8100/api_invoice?familyId=" + familyId).then(function(response) {
           return response.data;
         }).catch(function(response){
-          console.log("ERROR");
+
+        });
+      }
+  }
+
+}])
+
+.service('TransactionService', ['$http', function($http) {
+
+  return {
+      add: function(transaction) {
+        body = {
+          transaction: {
+            description: transaction.description,
+            amount: transaction.amount,
+            invoice_id: 1
+          }
+        }
+
+        return $http.post("http://localhost:8100/api_transaction/", body).then(function(response) {
+          return response;
+        }).catch(function(response){
+
         });
       }
   }

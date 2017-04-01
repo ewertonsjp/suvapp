@@ -1,14 +1,47 @@
 angular.module('app.controllers', [])
 
-.controller('invoiceCtrl', ['$scope', '$stateParams', 'InvoiceService', function ($scope, $stateParams, InvoiceService) {
+.controller('invoiceCtrl', ['$scope', '$stateParams', 'InvoiceService', 'TransactionService', '$ionicLoading', '$ionicModal', function ($scope, $stateParams, InvoiceService, TransactionService, $ionicLoading, $ionicModal) {
   var familyId = $stateParams.familyId;
-  InvoiceService.get(familyId).then(function(invoice) {
-      $scope.invoice = invoice;
+
+  $scope.showLoading = function() {
+  	$ionicLoading.show()
+  };
+  $scope.hideLoading = function(){
+  	$ionicLoading.hide();
+  };
+
+  $scope.update = function() {
+      $scope.showLoading();
+      InvoiceService.get(familyId).then(function(invoice) {
+          $scope.invoice = invoice;
+          $scope.hideLoading();
+      });
+      $scope.$broadcast('scroll.refreshComplete');
+  }
+  $scope.update();
+
+  $scope.addTransaction = function(transaction){
+    TransactionService.add(transaction).then(function(response){
+      $scope.update();
+    });
+    $scope.hideTransactionModal();
+  }
+
+  /*#### MODAL ######*/
+
+  $ionicModal.fromTemplateUrl('modal-template.html', function(modal) {
+    $scope.transactionModal = modal;
+  }, {
+    scope: $scope
   });
-}])
 
-.controller('transactionCtrl', ['$scope', '$stateParams', function ($scope, $stateParams) {
+  $scope.showTransactionModal = function(){
+    $scope.transactionModal.show();
+  }
 
+  $scope.hideTransactionModal = function(){
+    $scope.transactionModal.hide();
+  }
 
 }])
 

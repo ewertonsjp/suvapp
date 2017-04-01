@@ -1,10 +1,13 @@
 <ion-view title="{{invoice.description}}" id="page2">
 
   <ion-nav-buttons side="right" class="has-header">
-    <a href="/#/transaction/create" class="button button-icon icon ion-android-add-circle"></a>
+    <button class="button button-dark icon ion-android-add-circle" ng-click="showTransactionModal()"></button>
   </ion-nav-buttons>
 
   <ion-content padding="true" class="has-header">
+
+    <ion-refresher pulling-text="Quer mais? TOMA" on-refresh="update()"></ion-refresher>
+
     <form id="fatura-form1" class="list">
       <ion-toggle toggle-class="toggle-positive" id="fatura-toggle1">Pago</ion-toggle>
     </form>
@@ -16,7 +19,7 @@
       </ion-item>
     </ion-list>
 
-    <h3 id="fatura-heading2" style="color:#000000;">Rateio</h3>
+    <h3 id="fatura-heading2" style="color:#000000;">Por Colaborador</h3>
     <ion-list id="fatura-list3">
       <ion-item ng-repeat="pay in invoice.payments | orderBy: '-create_at'" class="item-avatar" id="fatura-list-item13">
         <img src="img/boy.png">
@@ -24,6 +27,38 @@
         <p>{{pay.amount | currency}}</p>
       </ion-item>
     </ion-list>
+
+    <!-- MODAL for COMMENT -->
+    <script id="modal-template.html" type="text/ng-template">
+      <div class="modal">
+
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+          <h1 class="title">Nova Transação</h1>
+          <button class="button button-clear button-positive" ng-click="hideTransactionModal()">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+
+          <form ng-submit="addTransaction(transaction)">
+            <div class="list">
+              <label class="item item-input">
+                <input type="text" placeholder="Descrição" ng-model="transaction.description">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Valor" ng-model="transaction.amount">
+              </label>
+            </div>
+            <div class="padding">
+              <button type="submit" class="button button-block button-balanced">Avaliar</button>
+            </div>
+          </form>
+
+        </ion-content>
+      </div>
+    </script>
+
   </ion-content>
 
 </ion-view>

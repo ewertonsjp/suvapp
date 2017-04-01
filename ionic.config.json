@@ -7,6 +7,9 @@
     },
     {
       "path": "/api_invoice", "proxyUrl": "http://suvinando.app/invoice/listAsJson"
+    },
+    {
+      "path": "/api_transaction", "proxyUrl": "http://suvinando.app/transaction"
     }
   ]
 }

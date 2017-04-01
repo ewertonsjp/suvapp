@@ -14,12 +14,6 @@ angular.module('app.routes', []).config(function($stateProvider, $urlRouterProvi
       controller: 'invoiceCtrl'
     })
 
-    .state('transaction', {
-      url: '/transaction/create',
-      templateUrl: 'templates/transaction.html',
-      controller: 'transactionCtrl'
-    })
-
     $urlRouterProvider.otherwise('/family')
 
 });
