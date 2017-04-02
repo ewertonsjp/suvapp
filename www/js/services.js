@@ -7,11 +7,11 @@ angular.module('app.services', [])
 .service('FamilyService', ['$http', function($http) {
 
   return {
-      list: function() {
-        return $http.get("http://localhost:8100/api_family/").then(function(response) {
+      list: function($userId) {
+        return $http.get("http://localhost:8100/api_family?userId="+$userId).then(function(response) {
           return response.data;
         }).catch(function(response){
-          
+
         });
       }
   }

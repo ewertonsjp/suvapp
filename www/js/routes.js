@@ -2,6 +2,12 @@ angular.module('app.routes', []).config(function($stateProvider, $urlRouterProvi
 
   $stateProvider
 
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'loginCtrl'
+    })
+
     .state('family', {
       url: '/family',
       templateUrl: 'templates/family.html',
@@ -14,6 +20,6 @@ angular.module('app.routes', []).config(function($stateProvider, $urlRouterProvi
       controller: 'invoiceCtrl'
     })
 
-    $urlRouterProvider.otherwise('/family')
+    $urlRouterProvider.otherwise('/login')
 
 });

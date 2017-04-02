@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "app_id": "",
+  "app_id": "02905953",
   "proxies": [
     {
       "path": "/api_family", "proxyUrl": "http://suvinando.app/family/listAsJson"
