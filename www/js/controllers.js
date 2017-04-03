@@ -20,11 +20,17 @@ angular.module('app.controllers', [])
   }
   $scope.update();
 
-  $scope.addTransaction = function(transaction){
-    TransactionService.add(transaction).then(function(response){
+  $scope.addTransaction = function(invoice, transaction){
+    TransactionService.add(invoice, transaction).then(function(response){
       $scope.update();
     });
     $scope.hideTransactionModal();
+  }
+
+  $scope.closeInvoice = function(invoice) {
+    InvoiceService.close(invoice).then(function(response){
+      $scope.update();
+    });
   }
 
   /*#### MODAL ######*/

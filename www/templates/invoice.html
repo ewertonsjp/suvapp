@@ -9,10 +9,15 @@
     <ion-refresher pulling-text="Quer mais? TOMA" on-refresh="update()"></ion-refresher>
 
     <form id="fatura-form1" class="list">
-      <ion-toggle toggle-class="toggle-positive" id="fatura-toggle1">Pago</ion-toggle>
+      <button class="button button-block button-positive" ng-click="closeInvoice(invoice)">Pagar Fatura</button>
     </form>
 
     <h3 id="fatura-heading1" style="color:#000000;">Total: {{invoice.amount | currency}}</h3>
+
+    <!-- <div id="invoice-markdown1" style="text-align:center;" ng-show="{{invoice.transactions.length != 0 }}" class="show-list-numbers-and-dots">
+      <p style="color:#000000;">Crie a primeira transação ;)!</p>
+    </div> -->
+
     <ion-list id="fatura-list2">
       <ion-item ng-repeat="transaction in invoice.transactions | orderBy: '-created_at'" id="transaction-list-item1">{{transaction.description}}
          <span class="item-note">{{transaction.amount | currency}}</span>
@@ -41,7 +46,7 @@
         <!-- Modal content area -->
         <ion-content>
 
-          <form ng-submit="addTransaction(transaction)">
+          <form ng-submit="addTransaction(invoice, transaction)">
             <div class="list">
               <label class="item item-input">
                 <input type="text" placeholder="Descrição" ng-model="transaction.description">

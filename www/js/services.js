@@ -22,10 +22,23 @@ angular.module('app.services', [])
 
   return {
       get: function(familyId) {
-        return $http.get("http://localhost:8100/api_invoice?familyId=" + familyId).then(function(response) {
+        return $http.get("http://localhost:8100/api_invoice/listAsJson?familyId=" + familyId).then(function(response) {
           return response.data;
         }).catch(function(response){
 
+        });
+      },
+
+      close: function(invoice) {
+        body = {
+          invoiceId: invoice.id
+        }
+
+        return $http.post("http://localhost:8100/api_invoice/", body).then(function(response) {
+          console.log(response);
+          return response;
+        }).catch(function(response){
+          console.log(response);
         });
       }
   }
@@ -35,19 +48,19 @@ angular.module('app.services', [])
 .service('TransactionService', ['$http', function($http) {
 
   return {
-      add: function(transaction) {
+      add: function(invoice, transaction) {
         body = {
           transaction: {
             description: transaction.description,
             amount: transaction.amount,
-            invoice_id: 1
+            invoice_id: invoice.id
           }
         }
 
         return $http.post("http://localhost:8100/api_transaction/", body).then(function(response) {
           return response;
         }).catch(function(response){
-
+          console.log(response);
         });
       }
   }
