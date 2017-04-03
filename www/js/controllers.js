@@ -21,6 +21,7 @@ angular.module('app.controllers', [])
   $scope.update();
 
   $scope.addTransaction = function(invoice, transaction){
+    $scope.showLoading();
     TransactionService.add(invoice, transaction).then(function(response){
       $scope.update();
     });
@@ -28,6 +29,7 @@ angular.module('app.controllers', [])
   }
 
   $scope.closeInvoice = function(invoice) {
+    $scope.showLoading();
     InvoiceService.close(invoice).then(function(response){
       $scope.update();
     });
