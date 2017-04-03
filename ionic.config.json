@@ -3,13 +3,16 @@
   "app_id": "02905953",
   "proxies": [
     {
-      "path": "/api_family", "proxyUrl": "http://suvinando.app/family/listAsJson"
+      "path": "/api_family",
+      "proxyUrl": "http://suvinando.app/family/listAsJson"
     },
     {
-      "path": "/api_invoice", "proxyUrl": "http://suvinando.app/invoice"
+      "path": "/api_invoice",
+      "proxyUrl": "http://suvinando.app/invoice"
     },
     {
-      "path": "/api_transaction", "proxyUrl": "http://suvinando.app/transaction"
+      "path": "/api_transaction",
+      "proxyUrl": "http://suvinando.app/transaction"
     }
   ]
 }
